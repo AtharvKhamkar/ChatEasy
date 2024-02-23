@@ -26,7 +26,7 @@ app.use(cookieParser())
 //routes
 import userRouter from "./routes/user.routes.js";
 
-
+app.use("/api/v1/auth",userRouter)
 
 app.get("/", (req, res) => {
     return res.send(`Server is running on ${process.env.PORT}`)
