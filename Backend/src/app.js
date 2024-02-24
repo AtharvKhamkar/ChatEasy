@@ -24,9 +24,13 @@ app.use(express.static("public"))
 app.use(cookieParser())
 
 //routes
+import authRouter from "./routes/auth.routes.js";
+import messageRouter from "./routes/message.routes.js";
 import userRouter from "./routes/user.routes.js";
 
-app.use("/api/v1/auth",userRouter)
+app.use("/api/v1/auth", authRouter)
+app.use("/api/v1/message", messageRouter)
+app.use("/api/v1/user",userRouter)
 
 app.get("/", (req, res) => {
     return res.send(`Server is running on ${process.env.PORT}`)

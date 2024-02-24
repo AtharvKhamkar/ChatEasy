@@ -122,34 +122,6 @@ const logoutUser = asyncHandler(async (req, res) => {
     )
 })
 
-const getUser = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.user?._id).select("-password -refreshToken")
 
-    return res.status(200)
-        .json(
-            new ApiResponse(
-                200,
-                user,
-                "User fetched successfully"
-        )
-    )
-})
-
-const deleteUser = asyncHandler(async (req, res) => {
-    const deleted_User = await User.findByIdAndDelete(req.user?._id)
-
-    return res.status(200)
-        .json(
-            new ApiResponse(
-                200,
-                {
-                    "deleted_user":deleted_User.username,
-                },
-                "User deleted successfully"
-
-        )
-    )
-})
-
-export { deleteUser, getUser, loginUser, logoutUser, registerUser };
+export { loginUser, logoutUser, registerUser };
 
